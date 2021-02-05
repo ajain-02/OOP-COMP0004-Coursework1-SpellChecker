@@ -3,7 +3,6 @@ import java.util.*;
 import java.util.regex.*;
 
 public class SuggestSpelling {
-    // Hello
     // Declares a private HashMap in which the probabilities of the words will be stored
     private final HashMap<String, Integer> wordsProbabilitySet = new HashMap<>();
 
