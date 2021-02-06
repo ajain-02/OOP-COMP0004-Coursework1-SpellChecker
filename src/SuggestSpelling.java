@@ -22,7 +22,7 @@ public class SuggestSpelling {
 
     // This method will see if any of the words in the dictionary match with the word that was
     // incorrectly spelt, if it does then it will add the probabilities of the word
-    public void matchingWordsWithRegex(BufferedReader in, Pattern patternMatch) throws IOException {
+    private void matchingWordsWithRegex(BufferedReader in, Pattern patternMatch) throws IOException {
         for (String temp = ""; temp != null; temp = in.readLine()) {
             temp = temp.toLowerCase();
             Matcher wordMatcher = patternMatch.matcher(temp);
@@ -32,7 +32,7 @@ public class SuggestSpelling {
 
     // If the word is already in the HashMap, then increase count of it by 1
     // If not, then set its count to 1
-    public void addingProbabilities(Matcher wordMatcher){
+    private void addingProbabilities(Matcher wordMatcher){
         while (wordMatcher.find()){
             // This will serve as an indicator to probability of a word
             String temp = wordMatcher.group();
@@ -55,45 +55,26 @@ public class SuggestSpelling {
 
     // This method will take the first substring of the word to be added to the StringArray
     // of possible correctedWords
-    public void firstWordPicker(String word, StringArray possibleCorrectedWords){
-        /*for (int i = 0; i < word.length(); ++i) {
-            int count = 0;
-            char characterToAdd = 'a';
-            while(count < 26){
-                possibleCorrectedWords.add(word.substring(0, i) + characterToAdd + word.substring(i + 1));
-                ++count;
-                ++characterToAdd;
-            }
-        }*/
-
-        for (int i = 0; i < word.length(); ++i) {
-            for (char c = 'a'; c <= 'z'; ++c) {
-                possibleCorrectedWords.add(word.substring(0, i) + c + word.substring(i + 1));
+    private void firstWordPicker(String word, StringArray possibleCorrectedWords){
+        for (int index = 0; index < word.length(); ++index) {
+            for (char characterToAdd = 'a'; characterToAdd <= 'z'; ++characterToAdd) {
+                possibleCorrectedWords.add(word.substring(0, index) + characterToAdd + word.substring(index + 1));
             }
         }
     }
 
     // This method will take the second substring of the word to be added to the StringArray
     // of possible correctedWords
-    public void secondWordPicker(String word, StringArray possibleCorrectedWords){
-        /*for (int i = 0; i < word.length(); ++i) {
-            int count = 0;
-            char characterToAdd = 'a';
-            while(count < 26){
-                possibleCorrectedWords.add(word.substring(0, i) + characterToAdd + word.substring(i));
-                ++count;
-                ++characterToAdd;
-            }
-        }*/
-        for (int i = 0; i <= word.length(); ++i) {
-            for (char c = 'a'; c <= 'z'; ++c) {
-                possibleCorrectedWords.add(word.substring(0, i) + c + word.substring(i));
+    private void secondWordPicker(String word, StringArray possibleCorrectedWords){
+        for (int index = 0; index <= word.length(); ++index) {
+            for (char characterToAdd = 'a'; characterToAdd <= 'z'; ++characterToAdd) {
+                possibleCorrectedWords.add(word.substring(0, index) + characterToAdd + word.substring(index));
             }
         }
     }
 
     // Method that compares input to dictionary words and checks for corrections on the others
-    public HashMap<Integer, String> addition(String word) {
+    private HashMap<Integer, String> addition(String word) {
         StringArray possibleCorrections = edits(word);
         HashMap<Integer, String> collectionOfCandidates = new HashMap<>();
 
@@ -102,7 +83,7 @@ public class SuggestSpelling {
     }
 
     // This method sets the String in the StringArray into the potentialWords HashMap
-    public void setStringInPotentialWordsHashMap(StringArray possibleCorrections, HashMap<Integer, String> collectionOfCandidates){
+    private void setStringInPotentialWordsHashMap(StringArray possibleCorrections, HashMap<Integer, String> collectionOfCandidates){
         for(int index = 0; index < possibleCorrections.size(); index++){ // Iterating through the list of all possible corrections to the word.
             String s = possibleCorrections.get(index);
             if (wordsProbabilitySet.containsKey(s)){

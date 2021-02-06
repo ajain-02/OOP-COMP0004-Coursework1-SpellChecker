@@ -62,7 +62,6 @@ public class MainMethodsForMainToRun extends SpellChecker{
     public void checkIfCorrectionFound(String chosenReplacement, int i) {
         if (chosenReplacement.equals("Sorry but no possible corrections found!")){
             System.out.println("\nNo possible corrections found for " + wrongWordsStore.get(i));
-            //String userWordSuggestion = takingUserWordSuggestion(i);
             takingUserWordSuggestion(i);
         }
         else{
@@ -79,16 +78,8 @@ public class MainMethodsForMainToRun extends SpellChecker{
         }
         else{
             takingUserWordSuggestion(i);
-            //int indexOfWrongWord = stringArrayText.indexOf(wrongWordsStore.get(i));
-            //stringArrayText.set(indexOfWrongWord, userWordSuggestion);
         }
     }
-
-    //public void Test4(int i) throws IOException {
-    //    String userWordSuggestion = takingUserWordSuggestion(i);
-    //    int indexOfWrongWord = stringArrayText.indexOf(wrongWordsStore.get(i));
-    //    stringArrayText.set(indexOfWrongWord, userWordSuggestion);
-    //}
 
     public String askForChoice(){
         System.out.println("Would you like to accept the word suggestion? Enter \"Yes\" or \"No\"");
@@ -102,10 +93,13 @@ public class MainMethodsForMainToRun extends SpellChecker{
         String userChoice = input.nextLine();
         String userWordCorrection;
         int indexOfWrongWord = stringArrayText.indexOf(wrongWordsStore.get(i));
+        replaceText(userChoice, indexOfWrongWord, i);
+    }
+
+    public void replaceText(String userChoice, int indexOfWrongWord, int i){
         if (userChoice.equals("Yes")){
             System.out.print("Please enter your word suggestion: ");
-            userWordCorrection = input.nextLine();
-            //return userWordCorrection;
+            String userWordCorrection = input.nextLine();
             stringArrayText.set(indexOfWrongWord, userWordCorrection);
         }
         else{
