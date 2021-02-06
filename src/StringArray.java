@@ -30,9 +30,14 @@ public class StringArray{
     }
 
     public void set(int index, String s){
-        for(int currentIndex = 0; currentIndex < size(); currentIndex++){
-            if (currentIndex==index){
-                this.stringLibrary[currentIndex] = s;
+        if (index<0){
+            throw new ArithmeticException("Can't have a negative Index");
+        }
+        else {
+            for (int currentIndex = 0; currentIndex < size(); currentIndex++) {
+                if (currentIndex == index) {
+                    this.stringLibrary[currentIndex] = s;
+                }
             }
         }
     }
@@ -112,7 +117,7 @@ public class StringArray{
     }
 
     public int indexOfMatchingCase(String s){
-        for(int index = 0; index < this.stringLibrary.length; index++){
+        for(int index = 0; index < size(); index++){
             if(containsMatchingCase(s)){
                 return index;
             }
