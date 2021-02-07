@@ -29,7 +29,7 @@ public class SpellChecker {
     public String inputMethod() throws FileNotFoundException {
         String stringToCheck;
         showTitle();
-        String choiceOfInput = askForTerminalOrFile();
+        int choiceOfInput = askForTerminalOrFile();
         stringToCheck = takeInputFromTerminalOrFile(choiceOfInput);
         System.out.println();
         stringToCheck = stringToCheck.replace(".", "");
@@ -37,12 +37,12 @@ public class SpellChecker {
         return stringToCheck;
     }
 
-    public String takeInputFromTerminalOrFile(String choiceOfInput) throws FileNotFoundException {
+    public String takeInputFromTerminalOrFile(int choiceOfInput) throws FileNotFoundException {
         String stringToCheck = "";
-        if (choiceOfInput.equalsIgnoreCase("Terminal")){
+        if (choiceOfInput == 1){
             stringToCheck = takeInputFromTerminal();
         }
-        else if (choiceOfInput.equalsIgnoreCase("File")){
+        else if (choiceOfInput == 2){
             stringToCheck = takeInputFromFile();
         }
         else{
@@ -97,11 +97,13 @@ public class SpellChecker {
         System.out.println("------------------------------");
     }
 
-    public String askForTerminalOrFile(){
-        System.out.println("Would you like to enter the sentence using the Terminal or read it from file?");
-        System.out.println("Enter \"Terminal\" or \"File\": ");
+    public int askForTerminalOrFile(){
+        System.out.println("Please select one of the following options");
+        System.out.println("1) Enter Sentence in the Terminal");
+        System.out.println("2) Read Sentence from a File\n");
+        System.out.print("Option Number Selected: ");
         input = new Scanner(System.in);
-        return input.nextLine();
+        return input.nextInt();
     }
 
     public String takeInputFromTerminal(){
@@ -116,7 +118,7 @@ public class SpellChecker {
         StringBuilder stringFileInput = new StringBuilder();
         File inputSentence = new File("inputSentence.txt");
         input = new Scanner(inputSentence);
-        System.out.println("\nSentence to be checked is being read from 'inputSentence.txt'");
+        System.out.println("\nSentence to be checked is being read from 'inputSentence.txt'... ");
         while(input.hasNextLine()){
             String words = input.nextLine();
             stringFileInput.append(words);

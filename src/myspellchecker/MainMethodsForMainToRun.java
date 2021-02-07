@@ -48,15 +48,21 @@ public class MainMethodsForMainToRun extends SpellChecker{
     }
 
     public void writeToTerminal(){
-        System.out.println("\nCorrect Sentence is: ");
+        System.out.print("\nCorrect Sentence is: \"");
         for(int i = 0; i < stringArrayText.size(); i++){
-            System.out.print(stringArrayText.get(i) + " ");
+            if(i == stringArrayText.size() - 1){
+                System.out.print(stringArrayText.get(i));
+            }
+            else {
+                System.out.print(stringArrayText.get(i) + " ");
+            }
         }
+        System.out.print("\"");
     }
 
     public void checkIfWrongWordsStoreIsEmpty(){
         if(wrongWordsStore.size() != 0) {
-            System.out.println("\n\nCorrect Sentence has also been stored in 'outputSentence.txt'\n");
+            System.out.println("\nCorrect Sentence has also been stored in 'outputSentence.txt'\n");
         }
         else{
             System.out.println("\n");
