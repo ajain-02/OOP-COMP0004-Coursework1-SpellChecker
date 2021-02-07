@@ -98,7 +98,7 @@ public class SpellChecker {
     }
 
     public int askForTerminalOrFile(){
-        System.out.println("Please select one of the following options");
+        System.out.println("Please select one of the following options:");
         System.out.println("1) Enter Sentence in the Terminal");
         System.out.println("2) Read Sentence from a File\n");
         System.out.print("Option Number Selected: ");
