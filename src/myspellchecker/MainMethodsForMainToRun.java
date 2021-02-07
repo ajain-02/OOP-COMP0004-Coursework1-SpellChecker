@@ -33,6 +33,7 @@ public class MainMethodsForMainToRun extends SpellChecker{
     }
 
     public void writeToCorrectedFile() throws IOException {
+        writeToTerminal();
         File correctedFile = new File("outputSentence.txt");
         if(correctedFile.createNewFile()){
             System.out.println("File 'outputSentence.txt' has been created");
@@ -42,14 +43,30 @@ public class MainMethodsForMainToRun extends SpellChecker{
             myWriter.write(stringArrayText.get(i));
             myWriter.write(" ");
         }
+        checkIfWrongWordsStoreIsEmpty();
         myWriter.close();
+    }
+
+    public void writeToTerminal(){
+        System.out.println("\nCorrect Sentence is: ");
+        for(int i = 0; i < stringArrayText.size(); i++){
+            System.out.print(stringArrayText.get(i) + " ");
+        }
+    }
+
+    public void checkIfWrongWordsStoreIsEmpty(){
+        if(wrongWordsStore.size() != 0) {
+            System.out.println("\n\nCorrect Sentence has also been stored in 'outputSentence.txt'\n");
+        }
+        else{
+            System.out.println("\n");
+        }
     }
 
     public void correction() {
         if(wrongWordsStore.size() != 0){
             System.out.println("Words have been found that don't match. Proceeding to correct them...");
             addingCorrection();
-            System.out.println("\nCorrect sentence has been stored in 'outputSentence.txt'\n");
         }
     }
 
