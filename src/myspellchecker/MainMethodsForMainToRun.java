@@ -1,3 +1,5 @@
+package myspellchecker;
+
 import java.io.*;
 import java.util.Scanner;
 

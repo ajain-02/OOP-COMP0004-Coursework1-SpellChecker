@@ -1,3 +1,5 @@
+package myspellchecker;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -45,6 +47,7 @@ public class SpellChecker {
         }
         else{
             System.out.println("You can only provide an input through Terminal or File!!!");
+            System.exit(1);
         }
         return stringToCheck;
     }

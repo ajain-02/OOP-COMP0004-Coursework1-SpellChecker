@@ -1,9 +1,11 @@
+package myspellchecker;
+
 import java.util.*;
 
 public class StringArray{
     private String[] stringLibrary;
 
-    // Declares a private counter for the number of elements added to the StringArray
+    // Declares a private counter for the number of elements added to the myspellchecker.StringArray
     private int countofElements = 0;
 
     public StringArray(){
@@ -53,7 +55,7 @@ public class StringArray{
 
     public void insertInMiddle(int index, String s){
         String stringToInsert;
-        // Make the StringArray bigger by 1, to allow the new element to be added
+        // Make the myspellchecker.StringArray bigger by 1, to allow the new element to be added
         this.stringLibrary = Arrays.copyOf(this.stringLibrary, this.stringLibrary.length + 1);
         // initially set to value parameter so the first iteration, the value is replaced by it
         stringToInsert = s;

@@ -1,3 +1,5 @@
+package myspellchecker;
+
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
@@ -53,7 +55,7 @@ public class SuggestSpelling {
         return possibleCorrectedWords;
     }
 
-    // This method will take the first substring of the word to be added to the StringArray
+    // This method will take the first substring of the word to be added to the myspellchecker.StringArray
     // of possible correctedWords
     private void firstWordPicker(String word, StringArray possibleCorrectedWords){
         for (int index = 0; index < word.length(); ++index) {
@@ -63,7 +65,7 @@ public class SuggestSpelling {
         }
     }
 
-    // This method will take the second substring of the word to be added to the StringArray
+    // This method will take the second substring of the word to be added to the myspellchecker.StringArray
     // of possible correctedWords
     private void secondWordPicker(String word, StringArray possibleCorrectedWords){
         for (int index = 0; index <= word.length(); ++index) {
@@ -82,7 +84,7 @@ public class SuggestSpelling {
         return collectionOfCandidates;
     }
 
-    // This method sets the String in the StringArray into the potentialWords HashMap
+    // This method sets the String in the myspellchecker.StringArray into the potentialWords HashMap
     private void setStringInPotentialWordsHashMap(StringArray possibleCorrections, HashMap<Integer, String> collectionOfCandidates){
         for(int index = 0; index < possibleCorrections.size(); index++){ // Iterating through the list of all possible corrections to the word.
             String s = possibleCorrections.get(index);
